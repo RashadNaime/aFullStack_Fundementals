@@ -1,0 +1,45 @@
+.container {
+    margin-top: 20px;
+}
+
+#form1 {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    margin-top: 20px;
+    margin: 10px auto;
+    padding: 20px 30px;
+    width: 760px;
+}
+
+#name {
+    margin-left: 158px;
+}
+
+#form1 .selectBar {
+    text-align: right;
+    margin-left: 100px;
+}
+
+#locations {
+    margin-left: 110px;
+}
+
+#resultsPage {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    text-align: center;
+    margin-top: 20px;
+    margin: 10px auto;
+    padding: 5px 5px;
+    width: 600px;
+}
+
+#comm {
+    width: 700px;
+}
+
+#btn1 {
+    margin-left: 625px;
+}

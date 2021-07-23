@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>POST REQUESTS</title>
+
+    <style>
+        .splitContainer {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="text-align: center; margin-top: 50px;">
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+
+        <div style="background-color: red; color: white;width: 500px; padding: 20px; margin: auto 415px;">
+            <p> {{message}}</p>
+        </div>
+        <!-- display each message in a paragraph tag -->
+        {% endfor %} {% endif %} {% endwith %}
+
+        <div class="splitContainer">
+            <div class="left">
+                <h1>Welcome {{logged_user.first_name}}</h1>
+                <p>These are the recipes!</p>
+            </div>
+            <div class="right">
+                <a href="/new/recipe/form">Create</a>
+                <a href="/user/logout">logout</a>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th>Name</th>
+                <th>Under 30 minutes?</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {%for recipe in all_recipes%}
+                <tr>
+                    <td>{{recipe.name}}</td>
+                    <td>{{recipe.under_min}}</td>
+                    <td><a href="/recipe/{{ recipe.id }}/view">View Instructions</a> {%if logged_user.id == recipe.user.id%}
+                        <p><a href="/edit/recipe/form/{{recipe.id}}">Edit recipe</a></p>
+                        <a href="/delete/recipe/{{recipe.id}}">Delete recipe</a> {%endif%}</td> {%endfor%}
+            </tbody>
+        </table>
+
+</body>
+
+</html>

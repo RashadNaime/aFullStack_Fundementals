@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>POST REQUESTS</title>
+
+</head>
+<style>
+    .splitContainer {
+        display: flex;
+        justify-content: space-around;
+        width: 1000px;
+        min-height: 600px;
+        margin-top: 50px;
+        background-color: lightblue;
+    }
+    
+    .form-group {
+        gap: 50px !important;
+    }
+    /*     
+    .signup {
+        text-align: left;
+        padding: 20px;
+    }
+    
+    .login {
+        text-align: right;
+        padding: 20px;
+    } */
+</style>
+
+<body>
+
+    <div class="container">
+        <h1>Welcome, {{logged_user.first_name}}</h1>
+        <table>
+            <thead>
+                <th>animal</th>
+                <th>is cool?</th>
+            </thead>
+            <tbody>
+                {%for pet in user_pets.pets%}
+                <tr>
+                    <td>{{pet.animal}}</td>
+                    <td>{{pet.cool}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <a href="/users/page"> Return to user page</a>
+    </div>
+</body>
+
+</html>

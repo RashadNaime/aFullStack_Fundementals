@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>POST REQUESTS</title>
+
+    <style>
+        .bottomBox {
+            width: 900px;
+            border-style: solid;
+            border-width: 3px;
+            border-color: black;
+            text-align: left;
+        }
+        
+        .userContainer {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .userContainer h1 {
+            margin-right: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 100px;">
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+
+        <div style="background-color: red; color: white;width: 500px; padding: 20px; margin: auto 415px;">
+            <p> {{message}}</p>
+        </div>
+        <!-- display each message in a paragraph tag -->
+        {% endfor %} {% endif %} {% endwith %}
+        <div class="userContainer">
+            <h1>Welcome {{logged_user.first_name}}</h1>
+            <a href="/users/page">Dashboard</a>
+            <a href="/user/logout">logout</a>
+        </div>
+        <h1>{{recipe.name}}</h1>
+        <div class="bottomBox">
+            <p>Description: {{recipe.description}}</p>
+            <p>Under 30 minutes: {{recipe.under_30_minutes}}</p>
+            <p>Instructions: {{recipe.instructions}}</p>
+            <p>Date Made: {{recipe.created_at}}</p>
+        </div>
+</body>
+
+</html>
